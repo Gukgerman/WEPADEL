@@ -21,22 +21,41 @@ export default function Reveal({
     const node = ref.current;
     if (!node) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            window.setTimeout(() => {
-              entry.target.classList.add("is-visible");
-            }, delay);
-            observer.unobserve(entry.target);
-          }
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
-    );
+    const show = () => node.classList.add("is-visible");
 
-    observer.observe(node);
-    return () => observer.disconnect();
+    // Safety net: some mobile browsers (notably older Safari, with
+    // percentage-based rootMargin) can fail to ever fire the observer.
+    // Content must never stay permanently invisible because of that.
+    const fallback = window.setTimeout(show, 2500);
+
+    if (typeof IntersectionObserver === "undefined") {
+      show();
+      return () => window.clearTimeout(fallback);
+    }
+
+    let observer: IntersectionObserver;
+    try {
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              window.clearTimeout(fallback);
+              window.setTimeout(show, delay);
+              observer.unobserve(entry.target);
+            }
+          }
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+      );
+      observer.observe(node);
+    } catch {
+      show();
+    }
+
+    return () => {
+      window.clearTimeout(fallback);
+      observer?.disconnect();
+    };
   }, [delay]);
 
   return (

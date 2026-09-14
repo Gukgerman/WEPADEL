@@ -19,7 +19,16 @@ export default function Loader() {
     } else {
       window.addEventListener("load", onLoad);
     }
-    return () => window.removeEventListener("load", onLoad);
+    // Safety net: window "load" waits for every image and iframe on the
+    // whole page (including the Google Maps embed). On a slow/unstable
+    // connection that can take a very long time or never fire at all,
+    // which would otherwise trap the visitor behind this full-screen
+    // overlay indefinitely. Never wait more than a few seconds.
+    const forced = window.setTimeout(onLoad, 3500);
+    return () => {
+      window.removeEventListener("load", onLoad);
+      window.clearTimeout(forced);
+    };
   }, []);
 
   useEffect(() => {

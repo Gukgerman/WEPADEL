@@ -93,6 +93,10 @@
   transform: translateX(-50px) translateY(-20px) scale(0.9025) rotate(-15.88deg);
 }
 
+.footer__mobile-cluster {
+  display: contents;
+}
+
 .footer__gallery {
   position: absolute;
   left: 31.63cqw;
@@ -299,5 +303,81 @@
   .footer__legal {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* phones only: bring back the desktop-style overlapping photo cluster,
+   sized to about half of the previous stacked-card width. cqw values
+   need a stable reference, so the cluster gets its own fixed-width
+   containment box instead of scaling off footer__top's narrow width. */
+@media (max-width: 639px) {
+  .footer__top {
+    flex-direction: column;
+    padding-top: 0;
+  }
+
+  .footer__tagline--left {
+    display: none;
+  }
+
+  .footer__tagline--right {
+    margin: 0 auto;
+    transform: none;
+  }
+
+  .footer__mobile-cluster {
+    display: block;
+    position: relative;
+    container-type: inline-size;
+    width: 300px;
+    height: 210px;
+    margin: 1.5rem auto 0.5rem;
+  }
+
+  .footer__decor {
+    position: absolute;
+    left: 31.13cqw;
+    top: 1.905cqw;
+    width: 20.83cqw;
+    height: 24.375cqw;
+    margin: 0;
+    aspect-ratio: auto;
+    transform: scale(0.9025) rotate(-15.88deg);
+  }
+
+  .footer__decor:hover {
+    transform: translateY(-20px) scale(0.9025) rotate(-15.88deg);
+  }
+
+  .footer__gallery {
+    position: absolute;
+    left: 31.63cqw;
+    top: -1.736cqw;
+    width: 43.06cqw;
+    height: 18.4cqw;
+    display: block;
+    gap: 0;
+    margin: 0;
+    transform: scale(0.9025);
+  }
+
+  .footer__gallery-photo-item,
+  .footer__button-item {
+    position: absolute;
+  }
+
+  .footer__gallery-photo-item {
+    left: 33.87%;
+    top: 0;
+    width: 32.26%;
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .footer__button-item {
+    left: 66.13%;
+    top: 5.849%;
+    width: 32.26%;
+    height: 88.3%;
   }
 }

@@ -62,6 +62,13 @@
   margin-bottom: clamp(0.625rem, 0.5rem + 0.5vw, 0.875rem);
 }
 
+/* mobile-only breaks: hidden by default, re-enabled in the 639px block */
+.about__intro-lead br,
+.about__feature-card--1 .about__feature-card-title br,
+.about__feature-card--3 .about__feature-card-title br {
+  display: none;
+}
+
 .about__intro-text {
   font-family: var(--font-body);
   font-weight: 500;
@@ -286,9 +293,9 @@
       "c1"
       "c2"
       "media"
-      "photo"
       "c3"
       "c4"
+      "photo"
       "cta";
   }
 
@@ -300,5 +307,35 @@
 
   .about__feature-media--gallery {
     aspect-ratio: 4 / 3;
+  }
+
+  /* mobile-only line breaks — hidden by default so desktop is untouched */
+  .about__intro-lead br,
+  .about__feature-card--1 .about__feature-card-title br,
+  .about__feature-card--3 .about__feature-card-title br {
+    display: inline;
+  }
+
+  /* the hard-coded breaks in the intro paragraph read fine on the wide
+     desktop measure but chop into one-word lines on a phone — let it
+     wrap naturally on mobile instead */
+  .about__intro-text br {
+    display: none;
+  }
+
+  .about__feature-card--1 .about__feature-card-desc span:nth-of-type(2) {
+    white-space: nowrap;
+  }
+
+  /* more breathing room under the card text, top (number row) untouched */
+  .about__feature-card--1,
+  .about__feature-card--2,
+  .about__feature-card--3,
+  .about__feature-card--4 {
+    padding-bottom: calc(clamp(1rem, 0.7rem + 1.2vw, 1.75rem) + 15px);
+  }
+
+  .about {
+    padding-bottom: calc(var(--section-gap-y) - 20px);
   }
 }

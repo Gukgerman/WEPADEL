@@ -386,3 +386,30 @@
   }
 }
 
+@media (max-width: 639px) {
+  /* shift the logo + nav row and the heading/address text 10px right */
+  .hero__navbar-inner,
+  .hero__intro-inner {
+    transform: translateX(10px);
+  }
+
+  /* logo.svg is one combined "WE are PADEL · I-ПАДЕЛ" mark, 304 units
+     wide; the "WE are PADEL" wordmark alone spans the first 129 units.
+     Crop to just that part by scaling the image so those 129 units
+     fill the (overflow:hidden) container, then double the result. */
+  .hero__logo {
+    overflow: hidden;
+    width: clamp(7rem, 5.5rem + 9vw, 10rem);
+  }
+
+  .hero__logo-mark {
+    width: calc(304 / 129 * 100%);
+    max-width: none;
+    flex-shrink: 0;
+  }
+
+  .hero__gallery-caption {
+    font-size: calc(clamp(0.75rem, 0.65rem + 0.4vw, 0.9375rem) * 0.5);
+  }
+}
+

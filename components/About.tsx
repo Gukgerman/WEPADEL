@@ -40,7 +40,9 @@ export default function About() {
               </span>
             ))}
           </h2>
-          <p className="about__intro-lead">{about.lead}</p>
+          <p className="about__intro-lead">
+            <MultilineText text={about.lead} />
+          </p>
           <p className="about__intro-text">
             <MultilineText text={about.text} />
           </p>

@@ -84,3 +84,9 @@
     display: block;
   }
 }
+
+@media (max-width: 639px) {
+  .mobile-nav {
+    transform: translateX(-10px);
+  }
+}

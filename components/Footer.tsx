@@ -11,31 +11,33 @@ export default function Footer() {
           <div className="footer__top">
             <p className="footer__tagline footer__tagline--left">{footer.taglineLeft}</p>
 
-            <div className="footer__decor">
-              <Image
-                src="/images/footer-decor.jpg"
-                alt="Відпочинок на корті We are Padel"
-                fill
-                sizes="(min-width: 900px) 300px, 45vw"
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-            <div className="footer__gallery">
-              <div className="footer__gallery-photo-item">
-                <div className="footer__collage-photo footer__collage-photo--gallery">
-                  <Image
-                    src="/images/footer-gallery.jpg"
-                    alt="М'ячі We are Padel"
-                    fill
-                    sizes="(min-width: 900px) 300px, 45vw"
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
+            <div className="footer__mobile-cluster">
+              <div className="footer__decor">
+                <Image
+                  src="/images/footer-decor.jpg"
+                  alt="Відпочинок на корті We are Padel"
+                  fill
+                  sizes="(min-width: 900px) 300px, 45vw"
+                  style={{ objectFit: "cover" }}
+                />
               </div>
-              <div className="footer__button-item">
-                <a className="footer__button" href="#pricing">
-                  <span className="footer__button-text">{footer.cta}</span>
-                </a>
+              <div className="footer__gallery">
+                <div className="footer__gallery-photo-item">
+                  <div className="footer__collage-photo footer__collage-photo--gallery">
+                    <Image
+                      src="/images/footer-gallery.jpg"
+                      alt="М'ячі We are Padel"
+                      fill
+                      sizes="(min-width: 900px) 300px, 45vw"
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
+                </div>
+                <div className="footer__button-item">
+                  <a className="footer__button" href="#pricing">
+                    <span className="footer__button-text">{footer.cta}</span>
+                  </a>
+                </div>
               </div>
             </div>
 

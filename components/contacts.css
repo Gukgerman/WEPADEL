@@ -270,3 +270,17 @@
     display: none;
   }
 }
+
+@media (max-width: 639px) {
+  .contacts {
+    margin-bottom: 70px;
+  }
+
+  .contacts__map-route {
+    transform: translate(-100px, -20px) rotate(-12.18deg);
+  }
+
+  .contacts__map-route:hover {
+    transform: translate(-100px, -20px) rotate(-12.18deg) scale(1.04);
+  }
+}

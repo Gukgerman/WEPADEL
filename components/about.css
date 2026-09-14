@@ -65,7 +65,8 @@
 /* mobile-only breaks: hidden by default, re-enabled in the 639px block */
 .about__intro-lead br,
 .about__feature-card--1 .about__feature-card-title br,
-.about__feature-card--3 .about__feature-card-title br {
+.about__feature-card--3 .about__feature-card-title br,
+.about__feature-card--3 .about__feature-card-desc br {
   display: none;
 }
 
@@ -312,7 +313,8 @@
   /* mobile-only line breaks — hidden by default so desktop is untouched */
   .about__intro-lead br,
   .about__feature-card--1 .about__feature-card-title br,
-  .about__feature-card--3 .about__feature-card-title br {
+  .about__feature-card--3 .about__feature-card-title br,
+  .about__feature-card--3 .about__feature-card-desc br {
     display: inline;
   }
 

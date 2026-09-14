@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { hero, nav } from "@/lib/content";
 import HeroSlider from "./HeroSlider";
-import MobileNav from "./MobileNav";
 import "./hero.css";
 
 export default function Hero() {
@@ -30,7 +29,6 @@ export default function Hero() {
                     </a>
                   ))}
                 </nav>
-                <MobileNav />
               </div>
             </header>
 

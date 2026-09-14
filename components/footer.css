@@ -311,9 +311,17 @@
    need a stable reference, so the cluster gets its own fixed-width
    containment box instead of scaling off footer__top's narrow width. */
 @media (max-width: 639px) {
+  /* generous cream space above the green plate so the tagline and photo
+     cluster can sit mostly on it, dipping into the green only at the
+     very bottom — matching the reference layout */
+  .footer {
+    padding-top: 500px;
+  }
+
   .footer__top {
     flex-direction: column;
     padding-top: 0;
+    margin-top: -420px;
   }
 
   .footer__tagline--left {
@@ -324,6 +332,10 @@
     order: -1;
     margin: 0 auto;
     transform: none;
+    /* this now sits on the cream background above the green plate,
+       so it needs the dark ink color instead of the light one used
+       for text painted directly on green */
+    color: var(--color-green);
   }
 
   .footer__mobile-cluster {

@@ -392,9 +392,14 @@
     padding-inline: 0;
   }
 
-  /* center the logo row and the heading/address text */
-  .hero__navbar-inner {
-    justify-content: center;
+  /* the persistent floating bar (logo + "Меню") now covers this role */
+  .hero__navbar {
+    display: none;
+  }
+
+  /* clear the fixed mobile-nav bar sitting on top of the hero */
+  .hero__intro {
+    padding-top: 4rem;
   }
 
   .hero__intro-inner {

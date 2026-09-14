@@ -39,7 +39,7 @@
   align-items: center;
   justify-content: space-between;
   gap: clamp(1.5rem, 0.5rem + 4vw, 4rem);
-  min-height: clamp(6rem, 4rem + 8vw, 13.4375rem);
+  min-height: calc(clamp(6rem, 4rem + 8vw, 13.4375rem) - 40px);
   padding-block: clamp(0.5rem, 0.3rem + 0.8vw, 0.625rem);
   container-type: inline-size;
 }

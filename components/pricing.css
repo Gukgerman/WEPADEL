@@ -53,6 +53,16 @@
   aspect-ratio: 360 / 481;
 }
 
+/* extra 10px gap between each photo and its own card, without touching
+   the gap between the two cards */
+.pricing__media--1 {
+  margin-right: 10px;
+}
+
+.pricing__media--2 {
+  margin-right: 10px;
+}
+
 .pricing__card {
   border-radius: clamp(0.875rem, 0.7rem + 0.7vw, 1.25rem);
   padding: clamp(1rem, 0.7rem + 1.2vw, 1.875rem) clamp(0.875rem, 0.6rem + 1vw, 1.5rem);
@@ -219,6 +229,8 @@
   }
   .pricing__media--2 {
     order: 4;
+    margin-right: 0;
+    margin-left: 10px;
   }
 }
 
@@ -229,5 +241,15 @@
 
   .pricing__media {
     aspect-ratio: 16 / 10;
+  }
+
+  .pricing__media--1 {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .pricing__media--2 {
+    margin-left: 0;
+    margin-top: 10px;
   }
 }

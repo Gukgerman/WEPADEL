@@ -28,7 +28,7 @@
 
 @media (min-width: 900px) {
   .footer__body {
-    margin-inline: -80px;
+    margin-inline: calc(-1 * (var(--gutter) - 20px));
   }
 }
 

@@ -338,4 +338,24 @@
   .about {
     padding-bottom: calc(var(--section-gap-y) - 20px);
   }
+
+  .about__feature-card-number {
+    font-size: calc(clamp(1.5rem, 1.2rem + 1.3vw, 2.5rem) + 5px);
+  }
+
+  .about__feature-card-title {
+    font-size: calc(clamp(0.9375rem, 0.85rem + 0.4vw, 1.25rem) + 5px);
+  }
+
+  .about__feature-card-desc {
+    font-size: calc(clamp(0.8125rem, 0.75rem + 0.25vw, 1.0625rem) + 1px);
+  }
+
+  .about__feature-cta-link {
+    transform: translateY(-10px) rotate(-6deg);
+  }
+
+  .about__feature-cta-link:hover {
+    transform: translateY(-10px) rotate(-6deg) scale(1.05);
+  }
 }

@@ -277,10 +277,14 @@
   }
 
   .contacts__map-route {
-    transform: translate(-100px, -20px) rotate(-12.18deg);
+    transform: translate(-220px, -20px) rotate(-12.18deg);
   }
 
   .contacts__map-route:hover {
-    transform: translate(-100px, -20px) rotate(-12.18deg) scale(1.04);
+    transform: translate(-220px, -20px) rotate(-12.18deg) scale(1.04);
+  }
+
+  .contacts__detail-value {
+    transform: translateX(-30px);
   }
 }

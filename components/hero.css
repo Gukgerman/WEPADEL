@@ -387,6 +387,11 @@
 }
 
 @media (max-width: 639px) {
+  /* brown plate goes edge-to-edge; its content stretches to fill it */
+  .hero {
+    padding-inline: 0;
+  }
+
   /* shift the logo + nav row and the heading/address text 10px right */
   .hero__navbar-inner,
   .hero__intro-inner {

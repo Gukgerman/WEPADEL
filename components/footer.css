@@ -331,7 +331,9 @@
     container-type: inline-size;
     width: 300px;
     height: 210px;
-    margin: 1.5rem auto 0.5rem;
+    margin: 15rem auto 15.5rem;
+    transform: scale(3);
+    transform-origin: center;
   }
 
   .footer__decor {
@@ -379,5 +381,25 @@
     top: 5.849%;
     width: 32.26%;
     height: 88.3%;
+  }
+
+  /* cqw-derived button/text sizing produced a box far too small for its
+     own label at this reference scale — fixed sizing here instead,
+     tuned to actually fit "ЗАБРОНЮВАТИ КОРТ" as a proper pill */
+  .footer__button {
+    position: absolute;
+    left: -80px;
+    top: 35px;
+    width: 100px;
+    height: 24px;
+    transform: translateX(-5px) scale(0.95) rotate(4.58deg);
+  }
+
+  .footer__button:hover {
+    transform: translateX(-5px) scale(0.95) rotate(4.58deg) scale(1.04);
+  }
+
+  .footer__button-text {
+    font-size: 9px;
   }
 }

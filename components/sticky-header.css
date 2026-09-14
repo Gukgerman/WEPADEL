@@ -4,6 +4,7 @@
   left: 0;
   right: 0;
   z-index: 100;
+  padding-inline: 20px;
   transform: translateY(-130%);
   transition: transform 0.3s ease;
 }

@@ -19,7 +19,7 @@
 
   /* fluid gutters — 20px at 375px viewport up to the design's real value at 1600px */
   --gutter: clamp(1.25rem, 0.4848rem + 3.2653vw, 3.75rem);
-  --gutter-hero: clamp(1rem, 0.8082rem + 0.8163vw, 1.625rem);
+  --gutter-hero: 20px;
 
   --container-max: 1600px;
 

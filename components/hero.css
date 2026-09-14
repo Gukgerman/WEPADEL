@@ -392,10 +392,27 @@
     padding-inline: 0;
   }
 
-  /* shift the logo + nav row and the heading/address text 10px right */
-  .hero__navbar-inner,
+  /* center the logo row and the heading/address text */
+  .hero__navbar-inner {
+    justify-content: center;
+  }
+
   .hero__intro-inner {
-    transform: translateX(10px);
+    text-align: center;
+  }
+
+  .hero__address-inner {
+    justify-content: center;
+  }
+
+  /* 2x the gap from heading to address, 3x the gap from address to the
+     gallery/photo content below it */
+  .hero__address {
+    margin-top: calc(clamp(0.75rem, 0.3rem + 1.8vw, 2.1875rem) * 2);
+  }
+
+  .hero__intro {
+    padding-bottom: calc(clamp(1.25rem, 0.7rem + 2.2vw, 3.75rem) * 3);
   }
 
   /* logo.svg is one combined "WE are PADEL · I-ПАДЕЛ" mark, 304 units

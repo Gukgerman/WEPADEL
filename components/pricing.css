@@ -1,0 +1,233 @@
+.pricing {
+  padding-block: var(--section-gap-y);
+}
+
+.pricing__header {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 1rem + 2vw, 2.5625rem);
+  padding-bottom: clamp(3.375rem, 2.875rem + 2vw, 4.75rem);
+}
+
+.pricing__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.pricing__label-icon-wrap {
+  width: 1.8125rem;
+  height: 1.8125rem;
+}
+
+.pricing__label-text {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(0.8125rem, 0.75rem + 0.25vw, 1.1875rem);
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  color: var(--color-green);
+}
+
+.pricing__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 1.1rem + 2.8vw, 3.5625rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--color-green);
+  max-width: 45rem;
+}
+
+.pricing__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.75rem, 0.4rem + 1.5vw, 1.75rem);
+  align-items: stretch;
+}
+
+.pricing__media {
+  position: relative;
+  border-radius: clamp(0.875rem, 0.7rem + 0.7vw, 1.25rem);
+  overflow: hidden;
+  aspect-ratio: 360 / 481;
+}
+
+.pricing__card {
+  border-radius: clamp(0.875rem, 0.7rem + 0.7vw, 1.25rem);
+  padding: clamp(1rem, 0.7rem + 1.2vw, 1.875rem) clamp(0.875rem, 0.6rem + 1vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(1.25rem, 0.9rem + 1.4vw, 2rem);
+}
+
+.pricing__card--basic {
+  background: var(--color-card-light);
+  color: var(--color-green);
+}
+
+.pricing__card--guest {
+  background: var(--color-green);
+  color: var(--color-card-light-2);
+}
+
+.pricing__card-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.1875rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.pricing__card-title span {
+  display: block;
+}
+
+.pricing__card-schedule {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 0.9rem + 1.4vw, 2.5rem);
+  flex: 1 1 auto;
+  justify-content: center;
+}
+
+.pricing__schedule-group {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.875rem, 0.6rem + 1vw, 1.875rem);
+}
+
+.pricing__schedule-label,
+.pricing__schedule-label-wrap .pricing__schedule-label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(0.875rem, 0.8rem + 0.3vw, 1.125rem);
+  letter-spacing: -0.013em;
+}
+
+.pricing__schedule-label-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.pricing__schedule-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.pricing__schedule-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.pricing__schedule-time {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
+}
+
+.pricing__schedule-price {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(0.9375rem, 0.85rem + 0.3vw, 1.125rem);
+  white-space: nowrap;
+}
+
+.pricing__card-note {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(0.8125rem, 0.75rem + 0.25vw, 0.9375rem);
+  line-height: 1.35;
+  letter-spacing: -0.013em;
+  color: var(--color-note-gray);
+}
+
+.pricing__card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.pricing__card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4375rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
+  letter-spacing: -0.013em;
+}
+
+.pricing__card-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: clamp(0.5rem, 0.4rem + 0.4vw, 0.625rem) clamp(1rem, 0.8rem + 0.8vw, 1.3125rem);
+  background: var(--color-green);
+  transition: transform 0.2s ease;
+}
+
+.pricing__card--guest .pricing__card-button {
+  background: var(--color-card-light-3);
+}
+
+.pricing__card-button:hover {
+  transform: translateY(-2px);
+}
+
+.pricing__card-button-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.6875rem, 0.65rem + 0.15vw, 0.75rem);
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  color: var(--color-card-light-3);
+}
+
+.pricing__card--guest .pricing__card-button-text {
+  color: var(--color-green);
+}
+
+/* responsive */
+
+@media (max-width: 1023px) {
+  .pricing__list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pricing__media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .pricing__media--1 {
+    order: 1;
+  }
+  .pricing__card--basic {
+    order: 2;
+  }
+  .pricing__card--guest {
+    order: 3;
+  }
+  .pricing__media--2 {
+    order: 4;
+  }
+}
+
+@media (max-width: 639px) {
+  .pricing__list {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing__media {
+    aspect-ratio: 16 / 10;
+  }
+}

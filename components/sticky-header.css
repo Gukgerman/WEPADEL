@@ -1,0 +1,104 @@
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transform: translateY(-130%);
+  transition: transform 0.3s ease;
+}
+
+.sticky-header--visible {
+  transform: translateY(0);
+}
+
+.sticky-header__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  background: var(--color-bg);
+  box-shadow: 0 8px 24px rgba(30, 79, 58, 0.1);
+  padding: clamp(0.625rem, 0.4rem + 0.9vw, 0.875rem) var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .sticky-header__inner {
+    margin-top: 20px;
+    max-width: calc(var(--container-max) - 4rem);
+    border-radius: 999px;
+    background: var(--color-white);
+    box-shadow: 0 12px 32px rgba(30, 79, 58, 0.16);
+    padding-block: 0.875rem;
+  }
+}
+
+.sticky-header__logo {
+  height: clamp(1.125rem, 0.9rem + 0.9vw, 1.5625rem);
+  width: auto;
+  max-width: 40vw;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.sticky-header__nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.875rem, 0.5rem + 1.5vw, 2.4375rem);
+  flex-wrap: wrap;
+  margin-left: auto;
+  transform: translateX(-20px);
+}
+
+.sticky-header__nav-link {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(0.8125rem, 0.745rem + 0.25vw, 0.9375rem);
+  letter-spacing: -0.015em;
+  color: var(--color-green);
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.sticky-header__nav-link:hover {
+  opacity: 0.65;
+}
+
+.sticky-header__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--color-terracotta);
+  color: var(--color-white);
+  padding: 0.5rem clamp(0.625rem, 0.4rem + 0.8vw, 1.5rem);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.5625rem, 0.5rem + 0.25vw, 0.75rem);
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: transform 0.2s ease;
+}
+
+@media (min-width: 900px) {
+  .sticky-header__cta {
+    padding: 0.75rem 1.75rem;
+    font-size: 0.8125rem;
+  }
+}
+
+.sticky-header__cta:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .sticky-header__nav {
+    display: none;
+  }
+}

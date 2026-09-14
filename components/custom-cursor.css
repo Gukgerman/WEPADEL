@@ -1,0 +1,26 @@
+.custom-cursor__ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--color-green);
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform, width, height, background-color, opacity;
+  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.custom-cursor__ring--active {
+  width: 22px;
+  height: 22px;
+  background: var(--color-terracotta);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor__ring {
+    display: none;
+  }
+}

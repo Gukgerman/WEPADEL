@@ -87,6 +87,6 @@
 
 @media (max-width: 639px) {
   .mobile-nav {
-    transform: translateX(-10px);
+    transform: translateX(-30px);
   }
 }

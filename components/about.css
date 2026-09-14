@@ -323,8 +323,10 @@
     display: none;
   }
 
-  .about__feature-card--1 .about__feature-card-desc span:nth-of-type(2) {
-    white-space: nowrap;
+  /* "та включитися в гру" moves back up onto the line above instead of
+     being forced onto its own row */
+  .about__feature-card--1 .about__feature-card-desc br {
+    display: none;
   }
 
   /* more breathing room under the card text, top (number row) untouched */
@@ -336,7 +338,7 @@
   }
 
   .about {
-    padding-bottom: calc(var(--section-gap-y) - 20px);
+    padding-bottom: calc((var(--section-gap-y) - 20px) * 0.5);
   }
 
   .about__feature-card-number {

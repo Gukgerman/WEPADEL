@@ -28,6 +28,7 @@ export default function Pricing() {
               src="/images/pricing-media-1.jpg"
               alt="Подача м'яча на корті"
               fill
+              loading="eager"
               sizes="(min-width: 1024px) 24vw, 100vw"
               style={{ objectFit: "cover" }}
             />
@@ -74,6 +75,7 @@ export default function Pricing() {
               src="/images/pricing-media-2.jpg"
               alt="Гравці на корті We are Padel"
               fill
+              loading="eager"
               sizes="(min-width: 1024px) 24vw, 100vw"
               style={{ objectFit: "cover" }}
             />
@@ -82,9 +84,15 @@ export default function Pricing() {
           <Reveal as="article" className="pricing__card pricing__card--guest" delay={120}>
             <div className="pricing__card-head">
               <h3 className="pricing__card-title">
-                {pricing.guest.title.map((line, i) => (
-                  <span key={i}>{line}</span>
-                ))}
+                <span className="pricing__card-title--desktop">
+                  {pricing.guest.title.map((line, i) => (
+                    <span key={i}>{line}</span>
+                  ))}
+                </span>
+                <span className="pricing__card-title--mobile">
+                  <span>Тариф для</span>
+                  <span>гостей гемпінгу</span>
+                </span>
               </h3>
             </div>
 

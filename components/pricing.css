@@ -90,6 +90,10 @@
   letter-spacing: -0.02em;
 }
 
+.pricing__card-title span.pricing__card-title--mobile {
+  display: none;
+}
+
 .pricing__card-title span {
   display: block;
 }
@@ -266,5 +270,17 @@
 
   .pricing__card {
     padding-block: calc(clamp(1rem, 0.7rem + 1.2vw, 1.875rem) + 15px);
+  }
+
+  .pricing__card-title span.pricing__card-title--mobile {
+    display: block;
+  }
+
+  .pricing__card-title--mobile span {
+    display: block;
+  }
+
+  .pricing__card-title span.pricing__card-title--desktop {
+    display: none;
   }
 }

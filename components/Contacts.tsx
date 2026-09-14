@@ -36,12 +36,23 @@ export default function Contacts() {
               <div className="contacts__detail-row contacts__detail-row--address">
                 <dt className="contacts__detail-label">Адреса</dt>
                 <dd className="contacts__detail-value">
-                  {contacts.address.map((line, i) => (
-                    <span key={i}>
-                      {line}
-                      {i < contacts.address.length - 1 && <br />}
-                    </span>
-                  ))}
+                  {contacts.address.map((line, i) => {
+                    const commaIndex = line.indexOf(", ");
+                    return (
+                      <span key={i}>
+                        {i === 0 && commaIndex !== -1 ? (
+                          <>
+                            {line.slice(0, commaIndex + 1)}
+                            <br className="contacts__address-break" />
+                            {line.slice(commaIndex + 1)}
+                          </>
+                        ) : (
+                          line
+                        )}
+                        {i < contacts.address.length - 1 && <br />}
+                      </span>
+                    );
+                  })}
                 </dd>
               </div>
             </Reveal>

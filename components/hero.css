@@ -416,5 +416,10 @@
   .hero__gallery-caption {
     font-size: calc(clamp(0.75rem, 0.65rem + 0.4vw, 0.9375rem) * 0.5);
   }
+
+  /* grow the beige card 20px further down */
+  .hero__content {
+    padding-bottom: calc(clamp(0.5rem, 0.3rem + 0.6vw, 0.625rem) + 20px);
+  }
 }
 

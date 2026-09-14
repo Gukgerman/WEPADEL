@@ -321,6 +321,7 @@
   }
 
   .footer__tagline--right {
+    order: -1;
     margin: 0 auto;
     transform: none;
   }
@@ -331,9 +332,9 @@
     container-type: inline-size;
     width: 300px;
     height: 210px;
-    margin: 15rem auto 15.5rem;
+    margin: 40px auto 130px;
     transform: scale(3);
-    transform-origin: center;
+    transform-origin: top center;
   }
 
   .footer__decor {
@@ -388,10 +389,10 @@
      tuned to actually fit "ЗАБРОНЮВАТИ КОРТ" as a proper pill */
   .footer__button {
     position: absolute;
-    left: -80px;
+    left: -70px;
     top: 35px;
-    width: 100px;
-    height: 24px;
+    width: 85px;
+    height: 20px;
     transform: translateX(-5px) scale(0.95) rotate(4.58deg);
   }
 
@@ -400,6 +401,6 @@
   }
 
   .footer__button-text {
-    font-size: 9px;
+    font-size: 7.5px;
   }
 }

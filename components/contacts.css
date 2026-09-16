@@ -337,4 +337,16 @@
   .contacts__address-line-break {
     display: none;
   }
+
+  /* force whatsapp+telegram onto one row and instagram onto its own,
+     regardless of exact phone width — natural wrapping only kicked in
+     once items stopped fitting, so a wider phone (e.g. Pro Max) had
+     room to fit all 3 on one row instead */
+  .contacts__social {
+    flex: 1 1 calc(50% - clamp(0.625rem, 0.4rem + 0.9vw, 0.875rem) / 2);
+  }
+
+  .contacts__social--instagram {
+    flex: 1 1 100%;
+  }
 }

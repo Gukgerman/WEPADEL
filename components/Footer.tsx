@@ -54,6 +54,10 @@ export default function Footer() {
             />
           </div>
 
+          <a className="footer__banner-button" href="#pricing">
+            <span className="footer__banner-button-text">{footer.cta}</span>
+          </a>
+
           <div className="footer__legal">
             <p className="footer__legal-company">
               ФОП Казіна Т.Б.

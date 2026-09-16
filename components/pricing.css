@@ -196,10 +196,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  border: none;
   border-radius: 999px;
   padding: clamp(0.5rem, 0.4rem + 0.4vw, 0.625rem) clamp(1rem, 0.8rem + 0.8vw, 1.3125rem);
   background: var(--color-green);
   transition: transform 0.2s ease;
+  cursor: pointer;
+  font: inherit;
 }
 
 .pricing__card--guest .pricing__card-button {
@@ -313,4 +316,123 @@
   .pricing__card-title span.pricing__card-title--desktop {
     display: none;
   }
+}
+
+/* tariff details popup */
+
+.pricing-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(20, 30, 26, 0.55);
+  animation: pricing-modal-fade 0.2s ease;
+}
+
+.pricing-modal {
+  position: relative;
+  width: 100%;
+  max-width: 26rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: clamp(1rem, 0.85rem + 0.7vw, 1.5rem);
+  padding: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  animation: pricing-modal-pop 0.22s ease;
+}
+
+.pricing-modal__close {
+  position: absolute;
+  top: clamp(0.75rem, 0.6rem + 0.6vw, 1.125rem);
+  right: clamp(0.75rem, 0.6rem + 0.6vw, 1.125rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-card-light);
+  color: var(--color-green);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.pricing-modal__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  letter-spacing: -0.02em;
+  color: var(--color-green);
+  margin-right: 2rem;
+}
+
+.pricing-modal__subtitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+  letter-spacing: -0.02em;
+  color: var(--color-green);
+  margin-top: 0.25rem;
+}
+
+.pricing-modal__heading {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.25rem);
+  letter-spacing: -0.013em;
+  color: var(--color-green);
+  margin-top: clamp(1.25rem, 1rem + 0.8vw, 1.625rem);
+}
+
+.pricing-modal__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  margin-top: 0.875rem;
+}
+
+.pricing-modal__list li {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(0.9375rem, 0.87rem + 0.3vw, 1.0625rem);
+  letter-spacing: -0.013em;
+  color: var(--color-green);
+}
+
+.pricing-modal__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  border-radius: 999px;
+  padding: clamp(0.75rem, 0.65rem + 0.4vw, 0.875rem) 1.5rem;
+  background: var(--color-green);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  color: var(--color-card-light-3);
+  transition: transform 0.2s ease;
+}
+
+.pricing-modal__cta:hover {
+  transform: translateY(-2px);
+}
+
+@keyframes pricing-modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pricing-modal-pop {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }

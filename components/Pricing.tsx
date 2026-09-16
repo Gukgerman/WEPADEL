@@ -1,9 +1,42 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { pricing } from "@/lib/content";
 import Reveal from "./Reveal";
 import "./pricing.css";
 
+type ModalKey = "basic" | "guest" | null;
+
+type PricingModalContent = {
+  title: string;
+  subtitle?: string;
+  heading: string;
+  items: string[];
+  cta: string;
+};
+
 export default function Pricing() {
+  const [openModal, setOpenModal] = useState<ModalKey>(null);
+
+  useEffect(() => {
+    if (!openModal) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenModal(null);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [openModal]);
+
+  const activeModal: PricingModalContent | null =
+    openModal === "basic" ? pricing.basic.modal : openModal === "guest" ? pricing.guest.modal : null;
+
   return (
     <section className="pricing" id="pricing">
       <div className="container">
@@ -64,9 +97,13 @@ export default function Pricing() {
                 <p className="pricing__card-meta-duration">{pricing.basic.duration}</p>
                 <p className="pricing__card-meta-capacity">{pricing.basic.capacity}</p>
               </div>
-              <a className="pricing__card-button" href="#contacts">
+              <button
+                type="button"
+                className="pricing__card-button"
+                onClick={() => setOpenModal("basic")}
+              >
                 <span className="pricing__card-button-text">{pricing.basic.button}</span>
-              </a>
+              </button>
             </div>
           </Reveal>
 
@@ -111,9 +148,13 @@ export default function Pricing() {
                 <p className="pricing__card-meta-duration">{pricing.guest.duration}</p>
                 <p className="pricing__card-meta-capacity">{pricing.guest.capacity}</p>
               </div>
-              <a className="pricing__card-button" href="#contacts">
+              <button
+                type="button"
+                className="pricing__card-button"
+                onClick={() => setOpenModal("guest")}
+              >
                 <span className="pricing__card-button-text">{pricing.guest.button}</span>
-              </a>
+              </button>
             </div>
           </Reveal>
 
@@ -128,6 +169,55 @@ export default function Pricing() {
           </div>
         </div>
       </div>
+
+      {activeModal && (
+        <div
+          className="pricing-modal-overlay"
+          onClick={() => setOpenModal(null)}
+          role="presentation"
+        >
+          <div
+            className="pricing-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="pricing-modal-title"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="pricing-modal__close"
+              aria-label="Закрити"
+              onClick={() => setOpenModal(null)}
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+            <h3 id="pricing-modal-title" className="pricing-modal__title">
+              {activeModal.title}
+            </h3>
+            {activeModal.subtitle && (
+              <p className="pricing-modal__subtitle">{activeModal.subtitle}</p>
+            )}
+
+            <p className="pricing-modal__heading">{activeModal.heading}</p>
+            <ul className="pricing-modal__list">
+              {activeModal.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+
+            <a
+              className="pricing-modal__cta"
+              href="https://t.me/germanguk"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpenModal(null)}
+            >
+              {activeModal.cta}
+            </a>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

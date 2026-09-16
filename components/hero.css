@@ -92,15 +92,16 @@
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1440px) {
   .hero__nav {
-    /* -50px was tuned for the wide desktop hero__content box; at
-       narrower "medium" widths that box is narrower too and the same
-       fixed shift pushes "ПРО" past its own overflow:hidden edge.
-       cqw (of hero__content's own width) scales it down safely while
-       still hitting -50px once the box is wide enough — max() picks
-       whichever is closer to 0, so it never over-shifts. */
-    transform: translateX(max(-50px, -7cqw));
+    /* -50px was tuned for the wide desktop hero__content box; measured
+       at 1100px wide the nav's natural (unshifted) position already
+       sits barely inside hero__content's own overflow:hidden edge, so
+       any leftward shift there clips "ПРО" outright — there's no safe
+       non-zero value to scale down to in that range. Keeping the
+       bleed only at the reference width it was tuned for and leaving
+       it unshifted everywhere narrower sidesteps that entirely. */
+    transform: translateX(-50px);
   }
 }
 
@@ -448,6 +449,18 @@
 
   .hero__gallery-caption {
     font-size: calc(clamp(0.75rem, 0.65rem + 0.4vw, 0.9375rem) * 0.5);
+  }
+
+  .hero__gallery {
+    transform: translateY(30px);
+  }
+
+  /* pull photo 2, the caption card, and the button left so they overlap
+     photo 1 (left unmoved) more than the desktop layout */
+  .hero__gallery-item--2,
+  .hero__gallery-item--3,
+  .hero__gallery-item--cta {
+    transform: translateX(-10px);
   }
 
   /* grow the beige card ~10% taller than its content, extra space added below */

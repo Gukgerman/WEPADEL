@@ -1,0 +1,14 @@
+import puppeteer from "puppeteer-core";
+const CHROME_PATH = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe";
+const [, , width] = process.argv;
+const w = Number(width);
+const browser = await puppeteer.launch({ executablePath: CHROME_PATH, headless: true, args: ["--no-sandbox"] });
+const page = await browser.newPage();
+await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
+await page.setViewport({ width: w, height: 900, deviceScaleFactor: 1 });
+await page.goto("http://localhost:3003/", { waitUntil: "load", timeout: 20000 });
+await new Promise(r => setTimeout(r, 500));
+const el = await page.$(".hero");
+await el.screenshot({ path: `C:/Users/suxxx/AppData/Local/Temp/simple-hero-${w}.png` });
+console.log("saved");
+await browser.close();

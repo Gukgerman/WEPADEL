@@ -8,12 +8,15 @@
   justify-content: center;
   gap: clamp(1.25rem, 1rem + 1vw, 1.875rem);
   background: var(--color-green);
+  /* never block scrolling/taps on the page underneath, even while the
+     splash is still visible — on a slow connection the JS that hides
+     it can take a while to even start running */
+  pointer-events: none;
   transition: opacity 0.4s ease;
 }
 
 .loader--done {
   opacity: 0;
-  pointer-events: none;
 }
 
 .loader__logo {

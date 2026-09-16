@@ -237,6 +237,35 @@
   transform: rotate(-12.18deg) scale(1.04);
 }
 
+/* tablet/small-desktop: the fixed "+200px" term above was tuned for a
+   ~584px-wide desktop map and overflows past the map's right edge once
+   it's squeezed into a narrower column (roughly 900-1350px viewport).
+   cqw scales with the map's own container width instead, reproducing
+   the exact same position at the reference desktop width while staying
+   safely inside the map at every width in between. Left untouched
+   below 640px, where the map is full-width and a different transform
+   is already tuned for that layout. */
+@media (min-width: 640px) {
+  .contacts__map {
+    container-type: inline-size;
+  }
+
+  .contacts__map-route {
+    left: 52.23cqw;
+    /* the button's own font/padding were viewport-vw based, so they
+       stayed desktop-sized even when the map column got squeezed
+       narrow in the 900-1350px range, overflowing regardless of its
+       left position. cqw ties them to the map's own width instead,
+       wrapped in the original clamp bounds so the widest and
+       narrowest ends still match exactly what they did before. */
+    padding: clamp(0.75rem, 2.74cqw, 1rem) clamp(1.25rem, 5.2cqw, 2rem);
+  }
+
+  .contacts__map-route-text {
+    font-size: clamp(0.8125rem, 2.67cqw, 0.9375rem);
+  }
+}
+
 .contacts__map-route-text {
   font-family: var(--font-display);
   font-weight: 700;
@@ -289,7 +318,12 @@
   }
 
   .contacts__details {
-    grid-template-columns: auto 1fr;
-    column-gap: 0.75rem;
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+
+  .contacts__detail-label,
+  .contacts__detail-value {
+    grid-column: 1;
   }
 }

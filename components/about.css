@@ -363,3 +363,23 @@
     transform: translateY(-10px) rotate(-6deg) scale(1.05);
   }
 }
+
+/* the -2.5rem lift on the CTA text/button is a desktop styling choice
+   that assumes a tall CTA cell; right at the narrow edge of the
+   4-column desktop grid (roughly 1024-1220px) that cell is short
+   enough that the lift pushes the text up into the photo slider's
+   cell above it. Same look everywhere else — this just removes the
+   lift in the one range where the grid can't support it. */
+@media (min-width: 1024px) and (max-width: 1220px) {
+  .about__feature-cta-text {
+    transform: none;
+  }
+
+  .about__feature-cta-link {
+    transform: rotate(-6deg);
+  }
+
+  .about__feature-cta-link:hover {
+    transform: rotate(-6deg) scale(1.05);
+  }
+}

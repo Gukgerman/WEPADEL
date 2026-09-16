@@ -259,31 +259,29 @@
     aspect-ratio: 16 / 10;
   }
 
-  /* natural DOM order on phones: photo, tariff, photo, green tariff */
+  /* natural DOM order on phones: tariff, green tariff, one big photo */
   .pricing__media--1 {
-    order: 1;
-    margin-right: 0;
-    margin-bottom: 10px;
+    display: none;
   }
 
   .pricing__card--basic {
-    order: 2;
+    order: 1;
   }
 
   .pricing__media--2 {
-    order: 3;
-    margin-left: 0;
-    margin-bottom: 10px;
+    display: none;
   }
 
   .pricing__card--guest {
-    order: 4;
+    order: 2;
   }
 
   .pricing__media--3 {
     display: block;
-    order: 5;
+    order: 3;
     margin-top: 10px;
+    /* 3x taller than the standard mobile media (16/10) at the same width */
+    aspect-ratio: 16 / 30;
   }
 
   .pricing__card {

@@ -119,8 +119,8 @@ export default function Pricing() {
 
           <div className="pricing__media pricing__media--3">
             <Image
-              src="/images/pricing-media-1.jpg"
-              alt="Подача м'яча на корті"
+              src="/images/pricing-media-2.jpg"
+              alt="Гравці на корті We are Padel"
               fill
               sizes="100vw"
               style={{ objectFit: "cover" }}

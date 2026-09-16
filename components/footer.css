@@ -406,6 +406,16 @@
     aspect-ratio: auto;
   }
 
+  /* the tablet rule above cancels this photo's rotation for its
+     static in-flow layout; the phone cluster is absolutely positioned
+     again like desktop, so the tilt needs restoring here too */
+  .footer__collage-photo--gallery {
+    position: static;
+    width: 100%;
+    height: 100%;
+    transform: rotate(16.18deg);
+  }
+
   .footer__button-item {
     left: 66.13%;
     top: 5.849%;
@@ -447,10 +457,11 @@
     text-align: center;
     width: max-content;
     max-width: calc(100% - 40px);
-    margin: 1.25rem auto 0.5rem;
+    margin: 2.25rem auto 2rem;
     padding: 0.9rem 2.25rem;
     border-radius: 999px;
     background: var(--color-terracotta);
+    transform: rotate(-3deg);
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
   }
 

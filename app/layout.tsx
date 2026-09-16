@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Unbounded, TikTok_Sans } from "next/font/google";
 import Loader from "@/components/Loader";
 import CustomCursor from "@/components/CustomCursor";
@@ -22,6 +22,13 @@ export const metadata: Metadata = {
   title: "WE are PADEL — падел-клуб під відкритим небом",
   description:
     "WE are PADEL — відкритий падел-клуб на території глемпінгу «Двері в ліс» у Вінниці. Оренда корту, тарифи, контакти.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({

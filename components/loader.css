@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   gap: clamp(1.25rem, 1rem + 1vw, 1.875rem);
-  background: var(--color-terracotta-2);
+  background: var(--color-green);
   transition: opacity 0.4s ease;
 }
 

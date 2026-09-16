@@ -49,7 +49,12 @@ export default function Contacts() {
                         ) : (
                           line
                         )}
-                        {i < contacts.address.length - 1 && <br />}
+                        {i < contacts.address.length - 1 && (
+                          <>
+                            {" "}
+                            <br className="contacts__address-line-break" />
+                          </>
+                        )}
                       </span>
                     );
                   })}

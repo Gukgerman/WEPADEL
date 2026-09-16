@@ -251,7 +251,12 @@
   }
 
   .contacts__map-route {
-    left: 52.23cqw;
+    /* clamp's upper bound reserves the button's own rendered width so
+       it can never push past the map's right edge — the natural
+       52.23cqw value (matching desktop) wins whenever there's room,
+       and the position only pulls left when the map is squeezed
+       narrower than the button itself needs */
+    left: clamp(20px, 52.23cqw, calc(100cqw - 285px));
     /* the button's own font/padding were viewport-vw based, so they
        stayed desktop-sized even when the map column got squeezed
        narrow in the 900-1350px range, overflowing regardless of its
@@ -318,12 +323,18 @@
   }
 
   .contacts__details {
-    grid-template-columns: 1fr;
-    column-gap: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.875rem;
   }
 
-  .contacts__detail-label,
-  .contacts__detail-value {
-    grid-column: 1;
+  .contacts__detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .contacts__address-line-break {
+    display: none;
   }
 }

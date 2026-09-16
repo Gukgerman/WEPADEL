@@ -116,6 +116,16 @@ export default function Pricing() {
               </a>
             </div>
           </Reveal>
+
+          <div className="pricing__media pricing__media--3">
+            <Image
+              src="/images/pricing-media-1.jpg"
+              alt="Подача м'яча на корті"
+              fill
+              sizes="100vw"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
         </div>
       </div>
     </section>

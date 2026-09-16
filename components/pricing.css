@@ -82,6 +82,10 @@
   color: var(--color-card-light-2);
 }
 
+.pricing__media--3 {
+  display: none;
+}
+
 .pricing__card-title {
   font-family: var(--font-display);
   font-weight: 700;
@@ -219,6 +223,14 @@
   }
 
   .pricing__media {
+    /* align-items:stretch on the grid gives these a definite height
+       (matching the tall pricing card next to them); without an
+       explicit width, aspect-ratio then computes width FROM that
+       stretched height instead of the grid column, blowing the photo
+       far past its track and overlapping/overflowing the row. An
+       explicit width locks it to the column so height derives from
+       width instead, the intended direction. */
+    width: 100%;
     aspect-ratio: 4 / 3;
   }
 
@@ -266,6 +278,12 @@
 
   .pricing__card--guest {
     order: 4;
+  }
+
+  .pricing__media--3 {
+    display: block;
+    order: 5;
+    margin-top: 10px;
   }
 
   .pricing__card {

@@ -39,8 +39,6 @@ html {
 }
 
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
   min-height: 100%;
   color: var(--color-green);
   background: var(--color-bg);
@@ -48,6 +46,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-wrap: pretty;
+}
+
+/* horizontal clipping lives on this ordinary wrapper div, not on
+   html/body: putting overflow-x:hidden on the root or having it
+   propagate from body turns the page itself into an internal scroll
+   container on iOS Safari, which is what breaks real vertical
+   scrolling there. A plain nested div clips the same intentional
+   horizontal bleed (footer decor, rotated hero button) without ever
+   touching how the viewport itself scrolls. */
+.page-shell {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 a {

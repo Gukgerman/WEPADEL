@@ -39,7 +39,7 @@ export default function RootLayout({
       <body>
         <Loader />
         <CustomCursor />
-        {children}
+        <div className="page-shell">{children}</div>
       </body>
     </html>
   );

@@ -356,11 +356,11 @@
   }
 
   .about__feature-cta-link {
-    transform: translateY(-10px) rotate(-6deg);
+    transform: translateY(-10px) rotate(-6deg) scaleX(1.2);
   }
 
   .about__feature-cta-link:hover {
-    transform: translateY(-10px) rotate(-6deg) scale(1.05);
+    transform: translateY(-10px) rotate(-6deg) scaleX(1.2) scale(1.05);
   }
 }
 

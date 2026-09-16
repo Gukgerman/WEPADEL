@@ -251,6 +251,11 @@
 }
 
 @media (max-width: 639px) {
+  /* pull the section 30px closer to the About block above it */
+  .pricing {
+    padding-top: calc(var(--section-gap-y) - 30px);
+  }
+
   .pricing__list {
     grid-template-columns: 1fr;
   }

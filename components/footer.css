@@ -7,7 +7,7 @@
   overflow-x: hidden;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 900px) {
   .footer {
     padding-top: 0;
   }
@@ -30,7 +30,7 @@
   margin-top: 30px;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 900px) {
   .footer__body {
     margin-inline: calc(-1 * (var(--gutter) - 20px));
   }
@@ -59,7 +59,7 @@
   flex: 0 0 auto;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 900px) {
   .footer__tagline {
     transform: translateY(100px);
   }
@@ -231,16 +231,7 @@
   color: var(--color-card-light-2);
 }
 
-/* The side-by-side tagline+photo desktop layout only actually works at
-   genuinely wide desktop widths (verified clear at 1440px). Between
-   900-1350px the fixed-width "ВІДПОЧИНЬ ВІД МІСТА" tagline and the
-   cqw-positioned decor photo collide (the tagline's width barely
-   shrinks with the container while the photo's position scales down
-   proportionally, so at narrower widths the photo lands underneath
-   text that hasn't moved out of the way yet). Extending this safe
-   stacked fallback all the way to 1439px sidesteps that overlap
-   entirely instead of patching every position value. */
-@media (max-width: 1439px) {
+@media (max-width: 899px) {
   .footer__top {
     flex-direction: column;
     align-items: stretch;
@@ -338,7 +329,15 @@
   .footer__top {
     flex-direction: column;
     padding-top: 0;
-    margin-top: -200px;
+    margin-top: -220px;
+  }
+
+  /* trims the green plate 20px off its top edge only: pushing the
+     plate itself down 20px, then pulling the banner (and everything
+     flowing after it) back up by the same 20px keeps the logo,
+     button, and legal row exactly where they were */
+  .footer__body {
+    margin-top: 50px;
   }
 
   .footer__tagline--left {
@@ -362,7 +361,7 @@
     width: 300px;
     height: 210px;
     margin: 40px auto 130px;
-    transform: translateY(30px) scale(3);
+    transform: translateY(70px) scale(3);
     transform-origin: top center;
   }
 
@@ -374,6 +373,10 @@
     height: 24.375cqw;
     margin: 0;
     aspect-ratio: auto;
+    /* matches the balls card's rendered corner radius: that card gets
+       an extra scale(1.3) on top of the same base radius, so this one
+       needs the same 1.3x bump to look identically rounded */
+    border-radius: calc(clamp(0.875rem, 0.7rem + 0.7vw, 1.25rem) * 1.3);
     transform: scale(0.9025) rotate(-15.88deg);
   }
 

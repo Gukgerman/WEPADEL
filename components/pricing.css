@@ -280,8 +280,9 @@
     display: block;
     order: 3;
     margin-top: 10px;
-    /* 3x taller than the standard mobile media (16/10) at the same width */
-    aspect-ratio: 16 / 30;
+    /* 2.4x taller than the standard mobile media (16/10): the previous
+       3x height (16/30) reduced by 20% */
+    aspect-ratio: 16 / 24;
   }
 
   .pricing__card {

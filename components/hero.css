@@ -284,6 +284,13 @@
   color: var(--color-green);
 }
 
+/* mobile-only: address duplicated inside the caption card, pinned to
+   its bottom edge; hidden here so desktop keeps a single address (the
+   one in hero__intro) */
+.hero__gallery-card-address {
+  display: none;
+}
+
 .hero__button {
   display: flex;
   align-items: center;
@@ -418,18 +425,17 @@
     text-align: center;
   }
 
-  .hero__address-inner {
-    justify-content: center;
-  }
-
-  /* 2x the gap from heading to address, 3x the gap from address to the
-     gallery/photo content below it */
+  /* address now lives inside the gallery caption card instead */
   .hero__address {
-    margin-top: calc(clamp(0.75rem, 0.3rem + 1.8vw, 2.1875rem) * 2);
+    display: none;
   }
 
   .hero__intro {
-    padding-bottom: calc(clamp(1.25rem, 0.7rem + 2.2vw, 3.75rem) * 3);
+    padding-bottom: calc(clamp(1.25rem, 0.7rem + 2.2vw, 3.75rem) * 1.5);
+  }
+
+  .hero__title {
+    font-size: calc(clamp(2rem, 1.1rem + 3.8vw, 4.375rem) * 1.1);
   }
 
   /* logo.svg is one combined "WE are PADEL · I-ПАДЕЛ" mark, 304 units
@@ -451,21 +457,106 @@
     font-size: calc(clamp(0.75rem, 0.65rem + 0.4vw, 0.9375rem) * 0.5);
   }
 
+  /* mobile gallery drops the shared 728x265 desktop reference grid: photos
+     sit bigger and overlap more, and the CTA leaves the rotated stack to
+     become a plain full-width pill in normal flow below the photos. Once
+     the CTA is a flow child, the gallery's own height includes it too —
+     so top/height (which % resolves against the *height* of the
+     containing block) can no longer safely describe the photos' vertical
+     placement, that height is no longer just "the photo area". cqw units
+     sidestep this: they're always a fraction of the container's *width*
+     (set via container-type below), so photo placement stays correct
+     regardless of what the CTA below adds to the box's total height. */
   .hero__gallery {
-    transform: translateY(30px);
+    aspect-ratio: auto;
+    container-type: inline-size;
   }
 
-  /* pull photo 2, the caption card, and the button left so they overlap
-     photo 1 (left unmoved) more than the desktop layout */
-  .hero__gallery-item--2,
-  .hero__gallery-item--3,
+  .hero__gallery-item--1 {
+    left: -1%;
+    top: 19cqw;
+    width: 42%;
+    height: 44cqw;
+  }
+
+  .hero__gallery-item--1 .hero__gallery-photo {
+    transform: rotate(-3deg);
+  }
+
+  .hero__gallery-item--2 {
+    left: 24%;
+    top: 0;
+    width: 40%;
+    height: 54cqw;
+  }
+
+  .hero__gallery-item--2 .hero__gallery-photo {
+    position: relative;
+    top: auto;
+    left: auto;
+    height: 100%;
+    transform: rotate(6deg);
+  }
+
+  .hero__gallery-item--3 {
+    left: 58%;
+    top: 3cqw;
+    width: 45%;
+    height: 48cqw;
+  }
+
+  .hero__gallery-item--3 .hero__gallery-caption-card {
+    flex-direction: column;
+    justify-content: space-between;
+    transform: rotate(10deg);
+  }
+
+  .hero__gallery-card-address {
+    display: flex;
+    align-items: center;
+    gap: 0.3125rem;
+  }
+
+  .hero__gallery-card-address-icon {
+    width: 0.75rem;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .hero__gallery-card-address-text {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.625rem;
+    line-height: 1.15;
+    letter-spacing: -0.006em;
+    text-transform: uppercase;
+    color: var(--color-terracotta);
+  }
+
+  /* CTA: out of the absolute/rotated stack, into normal flow below.
+     margin-top clears photo 1's bottom edge (19cqw + 44cqw = 63cqw)
+     plus headroom for its rotated corners' visual overflow. */
   .hero__gallery-item--cta {
-    transform: translateX(-10px);
+    position: static;
+    width: 100%;
+    height: auto;
+    margin-top: calc(70cqw + 0.75rem);
   }
 
-  /* grow the beige card ~10% taller than its content, extra space added below */
-  .hero__content {
-    padding-bottom: calc(clamp(0.5rem, 0.3rem + 0.6vw, 0.625rem) + 115px);
+  .hero__button {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 1.125rem 1.5rem;
+    transform: none;
+  }
+
+  .hero__button:hover {
+    transform: none;
+  }
+
+  .hero__button-text {
+    font-size: 1rem;
   }
 }
 

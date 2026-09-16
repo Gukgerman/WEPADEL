@@ -63,6 +63,14 @@
   margin-right: 10px;
 }
 
+/* desktop only: push that gap 10px further (20px total) */
+@media (min-width: 1024px) {
+  .pricing__media--1,
+  .pricing__media--2 {
+    margin-right: 20px;
+  }
+}
+
 .pricing__card {
   border-radius: clamp(0.875rem, 0.7rem + 0.7vw, 1.25rem);
   padding: clamp(1rem, 0.7rem + 1.2vw, 1.875rem) clamp(0.875rem, 0.6rem + 1vw, 1.5rem);

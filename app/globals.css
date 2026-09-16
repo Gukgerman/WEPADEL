@@ -68,7 +68,7 @@ a {
 /* custom scrollbar: brown thumb, dark track, slightly thinner than default */
 html {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-terracotta) var(--color-green);
+  scrollbar-color: var(--color-terracotta) #1a1a1a;
 }
 
 ::-webkit-scrollbar {
@@ -77,13 +77,13 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-green);
+  background: #1a1a1a;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--color-terracotta);
   border-radius: 999px;
-  border: 2px solid var(--color-green);
+  border: 2px solid #1a1a1a;
 }
 
 ::-webkit-scrollbar-thumb:hover {

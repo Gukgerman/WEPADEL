@@ -97,6 +97,22 @@ export default function Hero() {
                       </span>
                     ))}
                   </p>
+                  <div className="hero__gallery-card-address">
+                    <img
+                      className="hero__gallery-card-address-icon"
+                      src="/icons/icon-address.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                    <p className="hero__gallery-card-address-text">
+                      {hero.address.map((line, i) => (
+                        <span key={i}>
+                          {line}
+                          {i < hero.address.length - 1 && <br />}
+                        </span>
+                      ))}
+                    </p>
+                  </div>
                 </div>
               </li>
               <li className="hero__gallery-item hero__gallery-item--cta">

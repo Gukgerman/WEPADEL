@@ -356,6 +356,9 @@
   }
 
   .about__feature-cta-link {
+    /* grow rightward only, so the extra width doesn't push the left
+       edge into the card's clipped overflow */
+    transform-origin: left center;
     transform: translateY(-10px) rotate(-6deg) scaleX(1.2);
   }
 

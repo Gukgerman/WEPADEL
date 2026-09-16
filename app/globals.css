@@ -38,13 +38,13 @@ html {
   scroll-behavior: smooth;
 }
 
-/* overflow-x lives on body only, never on html: setting it on html
-   turns html itself into a scroll container instead of the real
-   viewport, which is what makes iOS Safari get stuck rubber-banding
-   on the first screen instead of actually scrolling the page */
+html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+}
+
+body {
   min-height: 100%;
   color: var(--color-green);
   background: var(--color-bg);

@@ -411,6 +411,12 @@
     padding-inline: 0;
   }
 
+  /* the CTA pill was flush against the beige plate's own bottom edge
+     (padding is zeroed at this breakpoint); give it 20px of clearance */
+  .hero__content {
+    padding-bottom: 20px;
+  }
+
   /* the persistent floating bar (logo + "Меню") now covers this role */
   .hero__navbar {
     display: none;
@@ -474,13 +480,14 @@
     container-type: inline-size;
   }
 
-  /* photos 1/2 and the card were bleeding past the hero's clipped edges;
-     shrink all three 10% (position anchors unchanged) to pull them back in */
+  /* still bled past the plate's own left/right edges with 0px clearance;
+     shrink another ~10% and pull photo 1 in from the left so all three
+     sit with real margin inside the plate on both sides */
   .hero__gallery-item--1 {
-    left: -1%;
+    left: 3%;
     top: 19cqw;
-    width: 37.8%;
-    height: 39.6cqw;
+    width: 34%;
+    height: 35.6cqw;
   }
 
   .hero__gallery-item--1 .hero__gallery-photo {
@@ -490,8 +497,8 @@
   .hero__gallery-item--2 {
     left: 24%;
     top: 0;
-    width: 36%;
-    height: 48.6cqw;
+    width: 32.4%;
+    height: 43.7cqw;
   }
 
   .hero__gallery-item--2 .hero__gallery-photo {
@@ -505,8 +512,8 @@
   .hero__gallery-item--3 {
     left: 58%;
     top: 3cqw;
-    width: 40.5%;
-    height: 43.2cqw;
+    width: 36.5%;
+    height: 38.9cqw;
   }
 
   .hero__gallery-item--3 .hero__gallery-caption-card {

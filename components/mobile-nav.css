@@ -7,7 +7,7 @@
   .mobile-nav {
     display: block;
     position: fixed;
-    top: calc(0.75rem + 5svh - 20px);
+    top: calc(0.75rem + 5svh - 35px);
     left: var(--gutter-hero);
     right: var(--gutter-hero);
     z-index: 95;

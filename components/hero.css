@@ -453,8 +453,10 @@
     flex-shrink: 0;
   }
 
+  /* match the address text size (it reads too small next to it otherwise);
+     keep everything else about the caption's style, including casing */
   .hero__gallery-caption {
-    font-size: calc(clamp(0.75rem, 0.65rem + 0.4vw, 0.9375rem) * 0.5);
+    font-size: clamp(0.8125rem, 0.72rem + 0.35vw, 1.0625rem);
   }
 
   /* mobile gallery drops the shared 728x265 desktop reference grid: photos
@@ -472,11 +474,13 @@
     container-type: inline-size;
   }
 
+  /* photos 1/2 and the card were bleeding past the hero's clipped edges;
+     shrink all three 10% (position anchors unchanged) to pull them back in */
   .hero__gallery-item--1 {
     left: -1%;
     top: 19cqw;
-    width: 42%;
-    height: 44cqw;
+    width: 37.8%;
+    height: 39.6cqw;
   }
 
   .hero__gallery-item--1 .hero__gallery-photo {
@@ -486,8 +490,8 @@
   .hero__gallery-item--2 {
     left: 24%;
     top: 0;
-    width: 40%;
-    height: 54cqw;
+    width: 36%;
+    height: 48.6cqw;
   }
 
   .hero__gallery-item--2 .hero__gallery-photo {
@@ -501,8 +505,8 @@
   .hero__gallery-item--3 {
     left: 58%;
     top: 3cqw;
-    width: 45%;
-    height: 48cqw;
+    width: 40.5%;
+    height: 43.2cqw;
   }
 
   .hero__gallery-item--3 .hero__gallery-caption-card {
@@ -534,13 +538,15 @@
   }
 
   /* CTA: out of the absolute/rotated stack, into normal flow below.
-     margin-top clears photo 1's bottom edge (19cqw + 44cqw = 63cqw)
-     plus headroom for its rotated corners' visual overflow. */
+     margin-top clears photo 1's bottom edge, minus 30px to sit closer,
+     minus the usual headroom for its rotated corners' visual overflow.
+     Narrowed 15% and centered, since it no longer spans full width. */
   .hero__gallery-item--cta {
     position: static;
-    width: 100%;
+    width: 85%;
     height: auto;
-    margin-top: calc(70cqw + 0.75rem);
+    margin-top: calc(70cqw + 0.75rem - 30px);
+    margin-inline: auto;
   }
 
   .hero__button {

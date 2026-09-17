@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Reveal from "./Reveal";
 
 const slides = [
   { src: "/images/about-gallery.jpg", alt: "Територія глемпінгу «Двері в ліс»" },
@@ -26,7 +27,7 @@ export default function AboutSlider() {
   }, []);
 
   return (
-    <div className="about__feature-media about__feature-media--gallery">
+    <Reveal as="div" className="about__feature-media about__feature-media--gallery">
       {slides.map((slide, i) => (
         <div
           key={slide.src}
@@ -70,6 +71,6 @@ export default function AboutSlider() {
           />
         ))}
       </div>
-    </div>
+    </Reveal>
   );
 }

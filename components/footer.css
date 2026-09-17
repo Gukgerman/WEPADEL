@@ -541,3 +541,76 @@
     white-space: nowrap;
   }
 }
+
+/* Entrance animation for elements that already carry their own
+   load-bearing `transform` (position/scale, not decoration). The
+   generic .reveal rule also drives `transform`, so applying it as-is
+   here would silently replace these — instead `transform` is pinned
+   back to its original value at every breakpoint that sets one, and
+   the entrance motion runs on the separate `translate` property, which
+   composes with `transform` instead of fighting it. */
+.footer__tagline.reveal,
+.footer__tagline.reveal.is-visible {
+  transform: none;
+}
+
+.footer__tagline.reveal {
+  opacity: 0;
+  translate: 0 28px;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    translate 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer__tagline.reveal.is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (min-width: 900px) {
+  .footer__tagline.reveal,
+  .footer__tagline.reveal.is-visible {
+    transform: translateY(100px);
+  }
+}
+
+@media (max-width: 639px) {
+  .footer__tagline--left.reveal,
+  .footer__tagline--left.reveal.is-visible,
+  .footer__tagline--right.reveal,
+  .footer__tagline--right.reveal.is-visible {
+    transform: translateY(34px);
+  }
+
+  .footer__tagline.reveal {
+    translate: 0 40px;
+    transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+      translate 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .footer__mobile-cluster.reveal,
+  .footer__mobile-cluster.reveal.is-visible {
+    transform: translateY(100px) scale(3);
+    transform-origin: top center;
+  }
+
+  .footer__mobile-cluster.reveal {
+    opacity: 0;
+    translate: 0 40px;
+    transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+      translate 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .footer__mobile-cluster.reveal.is-visible {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__tagline.reveal,
+  .footer__mobile-cluster.reveal {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
+}

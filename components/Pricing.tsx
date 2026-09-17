@@ -56,7 +56,7 @@ export default function Pricing() {
         </div>
 
         <div className="pricing__list">
-          <div className="pricing__media pricing__media--1">
+          <Reveal as="div" className="pricing__media pricing__media--1">
             <Image
               src="/images/pricing-media-1.jpg"
               alt="Подача м'яча на корті"
@@ -65,7 +65,7 @@ export default function Pricing() {
               sizes="(min-width: 1024px) 24vw, 100vw"
               style={{ objectFit: "cover" }}
             />
-          </div>
+          </Reveal>
 
           <Reveal as="article" className="pricing__card pricing__card--basic" delay={80}>
             <div className="pricing__card-head">
@@ -107,7 +107,7 @@ export default function Pricing() {
             </div>
           </Reveal>
 
-          <div className="pricing__media pricing__media--2">
+          <Reveal as="div" className="pricing__media pricing__media--2">
             <Image
               src="/images/pricing-media-2.jpg"
               alt="Гравці на корті We are Padel"
@@ -116,7 +116,7 @@ export default function Pricing() {
               sizes="(min-width: 1024px) 24vw, 100vw"
               style={{ objectFit: "cover" }}
             />
-          </div>
+          </Reveal>
 
           <Reveal as="article" className="pricing__card pricing__card--guest" delay={120}>
             <div className="pricing__card-head">
@@ -158,7 +158,7 @@ export default function Pricing() {
             </div>
           </Reveal>
 
-          <div className="pricing__media pricing__media--3">
+          <Reveal as="div" className="pricing__media pricing__media--3">
             <Image
               src="/images/pricing-media-2.jpg"
               alt="Гравці на корті We are Padel"
@@ -166,7 +166,7 @@ export default function Pricing() {
               sizes="100vw"
               style={{ objectFit: "cover" }}
             />
-          </div>
+          </Reveal>
         </div>
       </div>
 

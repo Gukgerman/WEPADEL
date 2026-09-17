@@ -1,20 +1,28 @@
 "use client";
 
-import { useEffect, useRef, type ElementType, type ReactNode } from "react";
+import { useEffect, useRef, type ComponentPropsWithoutRef, type ElementType, type ReactNode } from "react";
 
-type RevealProps = {
+type RevealOwnProps<T extends ElementType> = {
   children: ReactNode;
-  as?: ElementType;
+  as?: T;
   className?: string;
   delay?: number;
 };
 
-export default function Reveal({
+// generic + rest-prop passthrough so Reveal can stand in directly for an
+// interactive tag (e.g. as="a" href="...") instead of needing an extra
+// wrapper element around it
+type RevealProps<T extends ElementType> = RevealOwnProps<T> &
+  Omit<ComponentPropsWithoutRef<T>, keyof RevealOwnProps<T>>;
+
+export default function Reveal<T extends ElementType = "div">({
   children,
-  as: Tag = "div",
+  as,
   className = "",
   delay = 0,
-}: RevealProps) {
+  ...rest
+}: RevealProps<T>) {
+  const Tag = (as ?? "div") as ElementType;
   const ref = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -59,7 +67,7 @@ export default function Reveal({
   }, [delay]);
 
   return (
-    <Tag ref={ref} className={`reveal ${className}`}>
+    <Tag ref={ref} className={`reveal ${className}`} {...rest}>
       {children}
     </Tag>
   );

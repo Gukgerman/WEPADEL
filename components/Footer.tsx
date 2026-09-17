@@ -9,9 +9,15 @@ export default function Footer() {
       <div className="container footer__inner">
         <div className="footer__body">
           <div className="footer__top">
-            <p className="footer__tagline footer__tagline--left">{footer.taglineLeft}</p>
+            <Reveal as="p" className="footer__tagline footer__tagline--left">
+              {footer.taglineLeft}
+            </Reveal>
 
-            <div className="footer__mobile-cluster">
+            {/* transform is load-bearing here (scale/position, not just
+                decoration) — .reveal's own transform is overridden back to
+                it in footer.css, the entrance motion runs on the separate
+                `translate` property instead so the two don't fight */}
+            <Reveal as="div" className="footer__mobile-cluster" delay={80}>
               <div className="footer__decor">
                 <Image
                   src="/images/footer-decor.jpg"
@@ -39,12 +45,14 @@ export default function Footer() {
                   </a>
                 </div>
               </div>
-            </div>
+            </Reveal>
 
-            <p className="footer__tagline footer__tagline--right">{footer.taglineRight}</p>
+            <Reveal as="p" className="footer__tagline footer__tagline--right" delay={140}>
+              {footer.taglineRight}
+            </Reveal>
           </div>
 
-          <div className="footer__banner">
+          <Reveal as="div" className="footer__banner">
             <Image
               src="/images/footer-banner.png"
               alt="WE are PADEL"
@@ -52,13 +60,13 @@ export default function Footer() {
               sizes="(min-width: 900px) 1440px, 100vw"
               style={{ objectFit: "contain" }}
             />
-          </div>
+          </Reveal>
 
-          <a className="footer__banner-button" href="#pricing">
+          <Reveal as="a" className="footer__banner-button" href="#pricing" delay={80}>
             <span className="footer__banner-button-text">{footer.cta}</span>
-          </a>
+          </Reveal>
 
-          <div className="footer__legal">
+          <Reveal as="div" className="footer__legal" delay={80}>
             <p className="footer__legal-company">
               ФОП Казіна Т.Б.
               <br />
@@ -78,7 +86,7 @@ export default function Footer() {
             >
               {footer.legal.credit}
             </a>
-          </div>
+          </Reveal>
         </div>
       </div>
     </footer>

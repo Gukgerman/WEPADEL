@@ -54,10 +54,18 @@ body {
    container on iOS Safari, which is what breaks real vertical
    scrolling there. A plain nested div clips the same intentional
    horizontal bleed (footer decor, rotated hero button) without ever
-   touching how the viewport itself scrolls. */
+   touching how the viewport itself scrolls.
+   `clip`, not `hidden`: hidden on only one axis forces the other axis's
+   computed value to `auto` (same footgun as .hero/.footer had) - and
+   transformed descendants (the footer's scale(3) photo cluster) count
+   toward scrollable overflow even though transforms don't affect
+   layout, so this *was* measurably turning page-shell into its own
+   nested scroll container too, just for a few tens of pixels - enough
+   to hijack/hand off scroll unpredictably once the real page finished
+   scrolling. `clip` still clips the bleed without that promotion. */
 .page-shell {
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 a {

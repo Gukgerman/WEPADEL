@@ -287,6 +287,25 @@
   }
 }
 
+/* tablet-only (640-1023px): cards 1 and 3 lost their explicit title
+   break here (it's suppressed by default and only restored again below
+   639px), so "Зручно добиратися" / "Професійні карти" collapsed onto a
+   single line while cards 2 and 4 kept their 2-row titles - an
+   inconsistent grid. Force all four back to 2 rows in just this range.
+   Also let the intro paragraph wrap naturally instead of following its
+   hard-coded desktop-measure breaks, which were splitting mid-phrase
+   (e.g. "Двері в" / "ліс") at these narrower widths. */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .about__feature-card--1 .about__feature-card-title br,
+  .about__feature-card--3 .about__feature-card-title br {
+    display: inline;
+  }
+
+  .about__intro-text br {
+    display: none;
+  }
+}
+
 @media (max-width: 639px) {
   .about__features {
     grid-template-columns: 1fr;

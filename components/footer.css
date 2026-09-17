@@ -334,6 +334,30 @@
   }
 }
 
+/* tablet-only (640-899px): the decor/gallery photo cluster (rotated
+   collage + CTA pill) was tuned for either the desktop absolute layout
+   or the phone-specific scaled cluster below - at this width it just
+   sat in normal flow with no equivalent tuning, ballooning footer__top
+   and leaving a lot of empty green underneath before the logo banner.
+   Drop the whole cluster, keep only the two taglines, and pull the
+   banner up so the green card ends shortly after it instead of trailing
+   empty space. */
+@media (min-width: 640px) and (max-width: 899px) {
+  .footer__mobile-cluster {
+    display: none;
+  }
+
+  .footer__top {
+    min-height: 0;
+    padding-block: clamp(1.5rem, 1rem + 2vw, 2.5rem) 0.5rem;
+    gap: 0.75rem;
+  }
+
+  .footer__banner {
+    margin-top: 50px;
+  }
+}
+
 @media (max-width: 479px) {
   .footer__legal {
     flex-direction: column;

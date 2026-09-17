@@ -347,7 +347,7 @@
      cluster can sit mostly on it, dipping into the green only at the
      very bottom — matching the reference layout */
   .footer {
-    padding-top: 203px;
+    padding-top: 187px;
   }
 
   .footer__top {
@@ -389,9 +389,9 @@
   }
 
   .footer__tagline--left {
-    /* kept at the previously requested 20% bump — size unchanged here */
-    font-size: calc(clamp(1.125rem, 0.95rem + 0.9vw, 1.375rem) * 1.2);
-    font-weight: 400;
+    /* previous 1.2x bump, now cut 30%: 1.2 * 0.7 */
+    font-size: calc(clamp(1.125rem, 0.95rem + 0.9vw, 1.375rem) * 0.84);
+    font-weight: 100;
   }
 
   .footer__tagline--right {
@@ -407,7 +407,7 @@
     width: 300px;
     height: 210px;
     margin: 40px auto 130px;
-    transform: translateY(70px) scale(3);
+    transform: translateY(100px) scale(3);
     transform-origin: top center;
   }
 
@@ -500,6 +500,13 @@
   }
 
   .footer__banner-button {
+    /* .footer__mobile-cluster is position:relative (a higher paint/
+       hit-test level than this static-flow button, regardless of DOM
+       order), and its 3x-scaled box reaches down far enough to
+       overlap this button's screen position — silently eating clicks.
+       Positioning this above it fixes that. */
+    position: relative;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;

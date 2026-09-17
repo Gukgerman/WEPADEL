@@ -23,7 +23,12 @@ export default function Footer() {
                   src="/images/footer-decor.jpg"
                   alt="Відпочинок на корті We are Padel"
                   fill
-                  sizes="(min-width: 900px) 300px, 45vw"
+                  /* on phones this card is a fixed ~217px on screen
+                     regardless of viewport width (it's a 300px reference
+                     box scaled 3x via CSS transform, not proportional
+                     vw) — a vw-based hint under-requests resolution and
+                     the transform scaling then visibly pixelates it */
+                  sizes="(min-width: 900px) 300px, 220px"
                   style={{ objectFit: "cover" }}
                 />
               </div>
@@ -34,7 +39,10 @@ export default function Footer() {
                       src="/images/footer-gallery.jpg"
                       alt="М'ячі We are Padel"
                       fill
-                      sizes="(min-width: 900px) 300px, 45vw"
+                      /* same fixed-size reasoning as footer-decor.jpg,
+                         plus this card gets its own extra scale/scaleX
+                         on top, so it renders slightly larger still */
+                      sizes="(min-width: 900px) 300px, 240px"
                       style={{ objectFit: "cover" }}
                     />
                   </div>

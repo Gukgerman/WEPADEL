@@ -307,6 +307,30 @@
   }
 }
 
+/* Above 899px the side-by-side layout returns, but the collage's
+   Figma-accurate cqw position and the taglines' relatively fixed
+   pixel width were both tuned for the 1440px reference. Between
+   900-1350px there isn't room for both at that size: the photo card
+   creeps left into "ВІДПОЧИНЬ ВІД МІСТА." and visually slices through
+   it. Shrink and re-center the collage just in this range so it
+   clears both taglines without falling back to the stacked mobile
+   layout; 1350px+ hands back to the untouched desktop values. */
+@media (min-width: 900px) and (max-width: 1350px) {
+  .footer__decor {
+    left: 36.9cqw;
+    transform: translateX(0) scale(0.5) rotate(-15.88deg);
+  }
+
+  .footer__decor:hover {
+    transform: translateY(-20px) scale(0.5) rotate(-15.88deg);
+  }
+
+  .footer__gallery {
+    left: 37.9cqw;
+    transform: translateX(0) scale(0.5);
+  }
+}
+
 @media (max-width: 479px) {
   .footer__legal {
     flex-direction: column;
@@ -341,7 +365,10 @@
   }
 
   .footer__tagline--left {
-    display: none;
+    order: -2;
+    margin: 0 auto 0.5rem;
+    transform: none;
+    color: var(--color-green);
   }
 
   .footer__tagline--right {
@@ -352,6 +379,14 @@
        so it needs the dark ink color instead of the light one used
        for text painted directly on green */
     color: var(--color-green);
+  }
+
+  .footer__tagline--left,
+  .footer__tagline--right {
+    /* 20% bigger and bolder than the shared desktop tagline styling,
+       per request, mobile only */
+    font-size: calc(clamp(1.125rem, 0.95rem + 0.9vw, 1.375rem) * 1.2);
+    font-weight: 800;
   }
 
   .footer__mobile-cluster {
@@ -416,7 +451,8 @@
     position: static;
     width: 100%;
     height: 100%;
-    transform: rotate(16.18deg) scale(1.3);
+    /* tuned so its rendered bounding width matches the court photo's */
+    transform: rotate(16.18deg) scale(1.45);
   }
 
   .footer__button-item {

@@ -71,6 +71,12 @@
   margin-left: auto;
 }
 
+/* forced two-line break for the phone-only stacked tagline; a plain
+   inline break everywhere else would split "ЗІГРАЙ У ПАДЕЛ." apart */
+.footer__tagline-break {
+  display: none;
+}
+
 /* Figma reference (all coordinates read directly from the file):
    footer__top is 1440px wide. footer__gallery sits inside it at
    left=455.5,top=-25,w=620,h=265. Its 3 children are fixed 200px slots
@@ -347,7 +353,7 @@
      cluster can sit mostly on it, dipping into the green only at the
      very bottom — matching the reference layout */
   .footer {
-    padding-top: 500px;
+    padding-top: 236px;
   }
 
   .footer__top {
@@ -366,7 +372,7 @@
 
   .footer__tagline--left {
     order: -2;
-    margin: 0 auto 0.5rem;
+    margin: 0 auto -0.75rem;
     transform: none;
     color: var(--color-green);
   }
@@ -383,10 +389,22 @@
 
   .footer__tagline--left,
   .footer__tagline--right {
-    /* 20% bigger and bolder than the shared desktop tagline styling,
-       per request, mobile only */
-    font-size: calc(clamp(1.125rem, 0.95rem + 0.9vw, 1.375rem) * 1.2);
+    text-align: center;
     font-weight: 800;
+  }
+
+  .footer__tagline--left {
+    /* kept at the previously requested 20% bump — size unchanged here */
+    font-size: calc(clamp(1.125rem, 0.95rem + 0.9vw, 1.375rem) * 1.2);
+  }
+
+  .footer__tagline--right {
+    /* 30% bigger than its previous (already 1.2x) mobile size: 1.2 * 1.3 */
+    font-size: calc(clamp(1.125rem, 0.95rem + 0.9vw, 1.375rem) * 1.56);
+  }
+
+  .footer__tagline-break {
+    display: block;
   }
 
   .footer__mobile-cluster {
@@ -408,10 +426,7 @@
     height: 24.375cqw;
     margin: 0;
     aspect-ratio: auto;
-    /* matches the balls card's rendered corner radius: that card gets
-       an extra scale(1.3) on top of the same base radius, so this one
-       needs the same 1.3x bump to look identically rounded */
-    border-radius: calc(clamp(0.875rem, 0.7rem + 0.7vw, 1.25rem) * 1.3);
+    border-radius: 20px;
     transform: scale(0.9025) rotate(-15.88deg);
   }
 
@@ -451,8 +466,10 @@
     position: static;
     width: 100%;
     height: 100%;
-    /* tuned so its rendered bounding width matches the court photo's */
-    transform: rotate(16.18deg) scale(1.45);
+    border-radius: 20px;
+    /* base scale tuned to match the court photo's width, plus an
+       extra 10% horizontal stretch per request */
+    transform: rotate(16.18deg) scale(1.45) scaleX(1.1);
   }
 
   .footer__button-item {

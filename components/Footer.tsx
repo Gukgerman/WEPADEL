@@ -41,7 +41,11 @@ export default function Footer() {
               </div>
             </div>
 
-            <p className="footer__tagline footer__tagline--right">{footer.taglineRight}</p>
+            <p className="footer__tagline footer__tagline--right">
+              {footer.taglineRight.split(" ")[0]}{" "}
+              <br className="footer__tagline-break" />
+              {footer.taglineRight.split(" ").slice(1).join(" ")}
+            </p>
           </div>
 
           <div className="footer__banner">

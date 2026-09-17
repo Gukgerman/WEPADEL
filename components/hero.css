@@ -442,6 +442,7 @@
 
   .hero__title {
     font-size: calc(clamp(2rem, 1.1rem + 3.8vw, 4.375rem) * 1.1);
+    transform: translateY(7px);
   }
 
   /* logo.svg is one combined "WE are PADEL · I-ПАДЕЛ" mark, 304 units
@@ -482,9 +483,13 @@
 
   /* still bled past the plate's own left/right edges with 0px clearance;
      shrink another ~10% and pull photo 1 in from the left so all three
-     sit with real margin inside the plate on both sides */
+     sit with real margin inside the plate on both sides. The card was
+     also just sitting next to photo 2 instead of overlapping it, so its
+     left is pulled in 20px more than the other two — the resulting
+     group is then shifted right as a whole to equalize the left/right
+     margins again. */
   .hero__gallery-item--1 {
-    left: 3%;
+    left: 7%;
     top: 19cqw;
     width: 34%;
     height: 35.6cqw;
@@ -495,7 +500,7 @@
   }
 
   .hero__gallery-item--2 {
-    left: 24%;
+    left: 28%;
     top: 0;
     width: 32.4%;
     height: 43.7cqw;
@@ -510,7 +515,7 @@
   }
 
   .hero__gallery-item--3 {
-    left: 58%;
+    left: 56.5%;
     top: 3cqw;
     width: 36.5%;
     height: 38.9cqw;

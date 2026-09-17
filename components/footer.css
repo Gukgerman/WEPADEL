@@ -1,10 +1,13 @@
 .footer {
   background: var(--color-bg);
   padding-top: clamp(3.5rem, 2.4rem + 5.5vw, 9.125rem);
-  /* the mobile photo cluster below is scaled up via transform and
-     relies on being clipped at the viewport edge; don't depend on a
-     distant ancestor's overflow rule for that, contain it here too */
-  overflow-x: hidden;
+  /* overflow-x:hidden used to live here unconditionally for the mobile
+     photo cluster's transform:scale(3) bleed (see the max-width:639px
+     rule below), but per the CSS overflow spec, setting only one axis
+     to a non-visible value forces the other axis's computed value to
+     "auto" too - so it was silently clipping the desktop collage's
+     intentional vertical overhang above the green plate. Scoped to the
+     mobile rule that actually needs it instead. */
 }
 
 @media (min-width: 900px) {
@@ -347,7 +350,12 @@
      cluster can sit mostly on it, dipping into the green only at the
      very bottom — matching the reference layout */
   .footer {
-    padding-top: 187px;
+    padding-top: 137px;
+    /* the photo cluster below is scaled up via transform and relies on
+       being clipped at the viewport edge; don't depend on a distant
+       ancestor's overflow rule for that, contain it here, only for the
+       breakpoint that actually needs it (see the base .footer rule) */
+    overflow-x: hidden;
   }
 
   .footer__top {
@@ -369,14 +377,16 @@
   .footer__tagline--left {
     order: -2;
     margin: 0 auto 0.4rem;
-    transform: none;
+    /* shifts both tagline lines down together, closer to the photo
+       cluster below, without touching the cluster's own position */
+    transform: translateY(34px);
     color: var(--color-green);
   }
 
   .footer__tagline--right {
     order: -1;
     margin: 0 auto;
-    transform: none;
+    transform: translateY(34px);
     /* this now sits on the cream background above the green plate,
        so it needs the dark ink color instead of the light one used
        for text painted directly on green */

@@ -70,7 +70,12 @@ export default function Footer() {
             <a className="footer__legal-link footer__legal-link--privacy" href="#">
               {footer.legal.privacy}
             </a>
-            <a className="footer__legal-link footer__legal-link--credit" href="#">
+            <a
+              className="footer__legal-link footer__legal-link--credit"
+              href="https://miro-form.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {footer.legal.credit}
             </a>
           </div>

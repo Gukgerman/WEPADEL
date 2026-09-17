@@ -11,8 +11,17 @@
     clamp(1rem, 0.5rem + 2vw, 2.375rem);
   /* the rotated CTA pill in the gallery slightly overhangs its own
      item box by design; contain that locally instead of depending on
-     a distant ancestor's overflow rule to keep it off the page edge */
-  overflow-x: hidden;
+     a distant ancestor's overflow rule to keep it off the page edge.
+     `clip`, not `hidden`: per the overflow spec, hidden on only one
+     axis forces the other axis's computed value to `auto` - which
+     turns .hero into an actual scrollable box the moment its content
+     is a hair taller than the 100vh box (e.g. on desktop widths where
+     the row's natural height creeps past the viewport). That nested
+     auto-scroll region then captures/traps mouse-wheel scrolling while
+     the cursor is over the first screen, feeling like the page "sticks"
+     on scroll. `clip` still clips the horizontal bleed but carries no
+     such promotion, so overflow-y stays `visible` as intended. */
+  overflow-x: clip;
 }
 
 .hero__row {

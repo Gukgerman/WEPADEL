@@ -271,6 +271,17 @@
   }
 }
 
+/* desktop: the clamp above still lets the rotated button's right edge
+   creep past the map's own (overflow: hidden) edge - the reserved
+   285px margin was tuned for the rotated bounding box at one reference
+   width and doesn't keep pace as the map keeps growing past it. Pull
+   the whole result 30px left so the button stays clear of the clip. */
+@media (min-width: 900px) {
+  .contacts__map-route {
+    left: calc(clamp(20px, 52.23cqw, calc(100cqw - 285px)) - 30px);
+  }
+}
+
 .contacts__map-route-text {
   font-family: var(--font-display);
   font-weight: 700;

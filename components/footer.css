@@ -354,8 +354,16 @@
     /* the photo cluster below is scaled up via transform and relies on
        being clipped at the viewport edge; don't depend on a distant
        ancestor's overflow rule for that, contain it here, only for the
-       breakpoint that actually needs it (see the base .footer rule) */
-    overflow-x: hidden;
+       breakpoint that actually needs it (see the base .footer rule).
+       `clip`, not `hidden`: per the overflow spec, hidden on only one
+       axis forces the other axis's computed value to `auto` - which
+       turned .footer into an actual vertically-scrollable box once the
+       scaled cluster's bleed exceeded its normal-flow height (visible
+       as a nested scrollbar/scroll-trap, especially once a tap-triggered
+       :hover shift on the photo pushed it just past the threshold).
+       `clip` still clips the horizontal bleed but carries no such
+       promotion, so overflow-y stays `visible` as intended. */
+    overflow-x: clip;
   }
 
   .footer__top {

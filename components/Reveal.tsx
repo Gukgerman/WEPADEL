@@ -34,7 +34,12 @@ export default function Reveal<T extends ElementType = "div">({
     // Safety net: some mobile browsers (notably older Safari, with
     // percentage-based rootMargin) can fail to ever fire the observer.
     // Content must never stay permanently invisible because of that.
-    const fallback = window.setTimeout(show, 2500);
+    // This timer starts at mount (page load), not when the element nears
+    // the viewport, so it must be long enough that a normal scroll down
+    // the page never beats it — otherwise everything below the fold
+    // shows up pre-revealed with no animation the moment it's scrolled
+    // to, which is indistinguishable from the animation "not working".
+    const fallback = window.setTimeout(show, 15000);
 
     if (typeof IntersectionObserver === "undefined") {
       show();

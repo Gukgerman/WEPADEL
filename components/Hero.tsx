@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { hero, nav } from "@/lib/content";
 import HeroSlider from "./HeroSlider";
+import Reveal from "./Reveal";
 import "./hero.css";
 
 export default function Hero() {
@@ -34,13 +35,19 @@ export default function Hero() {
 
             <div className="hero__intro">
               <div className="hero__intro-inner">
-                <h1 className="hero__title">
-                  {hero.title.map((line, i) => (
-                    <span className="hero__title-line" key={i}>
-                      {line}
-                    </span>
-                  ))}
-                </h1>
+                {/* wrapped in a plain Reveal div, not applied to the h1
+                    itself, since .hero__title already owns its own
+                    (unrelated) transform on mobile and the two would
+                    fight over the same CSS property */}
+                <Reveal>
+                  <h1 className="hero__title">
+                    {hero.title.map((line, i) => (
+                      <span className="hero__title-line" key={i}>
+                        {line}
+                      </span>
+                    ))}
+                  </h1>
+                </Reveal>
                 <div className="hero__address">
                   <div className="hero__address-inner">
                     <img
@@ -65,7 +72,7 @@ export default function Hero() {
             </div>
 
             <ul className="hero__gallery">
-              <li className="hero__gallery-item hero__gallery-item--1">
+              <Reveal as="li" className="hero__gallery-item hero__gallery-item--1" delay={150}>
                 <div className="hero__gallery-photo">
                   <Image
                     src="/images/hero-gallery-1.jpg"
@@ -75,8 +82,8 @@ export default function Hero() {
                     style={{ objectFit: "cover" }}
                   />
                 </div>
-              </li>
-              <li className="hero__gallery-item hero__gallery-item--2">
+              </Reveal>
+              <Reveal as="li" className="hero__gallery-item hero__gallery-item--2" delay={250}>
                 <div className="hero__gallery-photo">
                   <Image
                     src="/images/hero-gallery-2.jpg"
@@ -86,8 +93,8 @@ export default function Hero() {
                     style={{ objectFit: "cover" }}
                   />
                 </div>
-              </li>
-              <li className="hero__gallery-item hero__gallery-item--3">
+              </Reveal>
+              <Reveal as="li" className="hero__gallery-item hero__gallery-item--3" delay={350}>
                 <div className="hero__gallery-caption-card">
                   <p className="hero__gallery-caption">
                     {hero.galleryCaption.map((line, i) => (
@@ -114,12 +121,12 @@ export default function Hero() {
                     </p>
                   </div>
                 </div>
-              </li>
-              <li className="hero__gallery-item hero__gallery-item--cta">
+              </Reveal>
+              <Reveal as="li" className="hero__gallery-item hero__gallery-item--cta" delay={450}>
                 <a className="hero__button" href="#pricing">
                   <span className="hero__button-text">{hero.cta}</span>
                 </a>
-              </li>
+              </Reveal>
             </ul>
           </div>
         </div>

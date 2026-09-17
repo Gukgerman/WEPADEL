@@ -460,10 +460,9 @@
     flex-shrink: 0;
   }
 
-  /* match the address text size (it reads too small next to it otherwise);
-     keep everything else about the caption's style, including casing */
+  /* matched the address text size, then 20% smaller per feedback */
   .hero__gallery-caption {
-    font-size: clamp(0.8125rem, 0.72rem + 0.35vw, 1.0625rem);
+    font-size: calc(clamp(0.8125rem, 0.72rem + 0.35vw, 1.0625rem) * 0.8);
   }
 
   /* mobile gallery drops the shared 728x265 desktop reference grid: photos
@@ -516,7 +515,7 @@
 
   .hero__gallery-item--3 {
     left: 56.5%;
-    top: 3cqw;
+    top: 7.05cqw;
     width: 36.5%;
     height: 38.9cqw;
   }
